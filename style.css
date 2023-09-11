@@ -1,0 +1,7 @@
+:root {
+  --default-title-font-family: "UD デジタル 教科書体 NK-B", sans-serif;
+}
+
+.base {
+  font-family: var(--default-title-font-family);
+}
