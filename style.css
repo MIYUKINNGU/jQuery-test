@@ -1,5 +1,10 @@
+@font-foce{
+  font-family:"ほのか新丸ゴシック";
+  src:url(./fonts/honoka-marugo2-1/Honoka-Shin-Maru-Gothic_R.otf);
+}
+
 :root {
-  --default-title-font-family: fot-tsukuardgothic-std, sans-serif;
+  --default-title-font-family: "ほのか新丸ゴシック", sans-serif;
 }
 
 .base {
