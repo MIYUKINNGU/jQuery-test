@@ -3,16 +3,76 @@
   <head>
     <link rel="stylesheet" href="./style.css">
     <meta charset="utf-8">
-<title>3-1-1 Animate.cssの導入方法</title>
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<!--==============Animate.cssのCDNを読み込み===============-->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="./index.css" type="text/css">
+    <title>3-1-1 Animate.cssの導入方法</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--==============Animate.cssのCDNを読み込み===============-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
   </head>
   <body>
-    <div class="base">
-      <div style="width:95%;height:80px;background-color:#afafaf;" class="animate__animated animate__fadeInUp">
-        <h1>TEST</h1>
-      </div>
+    <header>
+      <p style="position: absolute; font-size: 1.5em; left: 1em; color: #deb887; -webkit-text-stroke: 0.1px #aaa;">すずめサーバー</p>
+      <nav>
+        <ul>
+          <li class="menu-item"><a href="./">ABOUT</a></li>
+          <li class="menu-item"><a href="./">JOIN</a></li>
+          <li class="menu-item"><a href="./">FAQ</a></li>
+          <li class="menu-item"><a href="./">STATUS</a></li>
+          <li class="menu-item"><a href="./">TOPICS</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div id="header">
+      <h1 style="position: absolute; font-size: 7.5em; top: 30%; left: 30%; color: #deb887; -webkit-text-stroke: 3px #e0d4c5">すずめサーバー</h1>
+      <ul class="slider">
+        <li class="slider-item slider-item01"></li>
+        <li class="slider-item slider-item02"></li>
+        <li class="slider-item slider-item03"></li>
+      </ul>
     </div>
+    <div class="base">
+      
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollgress/2.0.0/scrollgress.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/protonet-jquery.inview/1.1.2/jquery.inview.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>
+      $('.fadeInUpTrigger').on('inview', function(event, isInView) {
+        if (isInView) {//表示領域に入った時
+          $(this).addClass('animate__animated animate__fadeInUp');//クラス名が付与
+        } else {//表示領域から出た時
+          $(this).removeClass('animate__animated animate__fadeInUp');//クラス名が除去
+        }
+      });
+      
+      $('.base').scrollgress({//バーの高さの基準となるエリア指定
+        height: '5px',//バーの高さ
+        color: '#deb887',//バーの色
+      });
+
+      $('.slider').slick({
+        autoplay: true,//自動的に動き出すか。初期値はfalse。
+        autoplaySpeed: 3000,//次のスライドに切り替わる待ち時間
+        speed:1000,//スライドの動きのスピード。初期値は300。
+        infinite: true,//スライドをループさせるかどうか。初期値はtrue。
+        slidesToShow: 1,//スライドを画面に3枚見せる
+        slidesToScroll: 1,//1回のスクロールで3枚の写真を移動して見せる
+        arrows: true,//左右の矢印あり
+        prevArrow: '<div class="slick-prev"></div>',//矢印部分PreviewのHTMLを変更
+        nextArrow: '<div class="slick-next"></div>',//矢印部分NextのHTMLを変更
+        dots: false,//下部ドットナビゲーションの表示
+        pauseOnFocus: false,//フォーカスで一時停止を無効
+        pauseOnHover: false,//マウスホバーで一時停止を無効
+        pauseOnDotsHover: false,//ドットナビゲーションをマウスホバーで一時停止を無効
+      });
+
+      //スマホ用：スライダーをタッチしても止めずにスライドをさせたい場合
+      $('.slider').on('touchmove', function(event, slick, currentSlide, nextSlide){
+          $('.slider').slick('slickPlay');
+      });
+    </script>
   </body>
 </html>
